@@ -10,5 +10,5 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 - node.js
 - sequelize
 ---
-![apppic](public/assets/img/apppic.jpg)
+![apppic](public/assets/img/apppic.png)
 
