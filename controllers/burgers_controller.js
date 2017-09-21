@@ -8,25 +8,26 @@ var router = express.Router();
 var db = require("../models");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", (req, res) => {
+router.get("/", function (req, res) {
+    res.redirect("/burgers");
+});
+router.get("/burgers", (req, res) => {
     db.Burger.findAll().then(data => {
-
         res.render("index", { burgers: data });
     });
 });
 
-router.post("/", (req, res) => {
-
+router.post("/burgers/new", (req, res) => {
     console.log(req.body)
     db.Burger.create({
         name: req.body.name
     }).then(() => {
-
-        res.redirect("/")
+        res.redirect("/burgers")
     })
 
 });
-router.put("/:id", (req, res) => {
+
+router.put("/burgers/:id", (req, res) => {
     db.Burger.update({
         devoured: req.body.devoured
     }, {
@@ -34,7 +35,7 @@ router.put("/:id", (req, res) => {
                 id: req.params.id
             }
         }).then(() => {
-            res.redirect("/");
+            res.redirect("/burgers");
         });
 });
 
